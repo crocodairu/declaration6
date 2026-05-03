@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Love Page</title>
+
+<style>
+@keyframes pulse {
+    0% { transform: rotate(-45deg) scale(1); }
+    50% { transform: rotate(-45deg) scale(1.2); }
+    100% { transform: rotate(-45deg) scale(1); }
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh);
+        opacity: 0;
+    }
+}
+
+/* ❤️ СЕРДЕЧКИ */
+.heart {
+    position: absolute;
+    top: -20px;
+    color: red;
+    font-size: 20px;
+    animation: fall linear forwards;
+    pointer-events: none;
+    z-index: 9999; /* 👈 теперь ВСЕГДА поверх фоток */
+}
+</style>
+
+</head>
+
+<body style="margin:0; height:100vh; background:linear-gradient(135deg,#ffd6dc,#ffeef2); font-family:Arial; overflow:hidden;">
+
+<!-- 📷 ЛЕВАЯ КОЛОНКА -->
+<div style="
+    position:fixed;
+    left:0;
+    top:20px;
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+    padding-left:10px;
+    z-index:2;
+">
+
+    <img src="mmm/m9.jpeg" style="width:320px;height:250px;object-fit:cover;border-radius:12px;box-shadow:0 8px 20px rgba(0,0,0,0.25);">
+
+    <video autoplay muted loop style="width:320px;height:280px;object-fit:cover;border-radius:12px;">
+        <source src="mmm/m10.mp4">
+    </video>
+
+    <img src="mmm/m11.jpeg" style="width:320px;height:180px;object-fit:cover;border-radius:12px;">
+
+</div>
+
+<!-- 📷 ПРАВАЯ КОЛОНКА -->
+<div style="
+    position:fixed;
+    right:0;
+    top:20px;
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+    padding-right:10px;
+    z-index:2;
+">
+
+    <video autoplay muted loop style="width:320px;height:300px;object-fit:cover;border-radius:12px;">
+        <source src="mmm/m12.mp4">
+    </video>
+
+    <img src="mmm/m13.jpeg" style="width:320px;height:180px;object-fit:cover;border-radius:12px;">
+
+    <video autoplay muted loop style="width:320px;height:230px;object-fit:cover;border-radius:12px;">
+        <source src="mmm/m14.mp4">
+    </video>
+
+</div>
+
+<!-- ❤️ ЦЕНТР -->
+<div style="
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    z-index:2;
+">
+
+    <div style="
+        background:white;
+        width:380px;
+        height:600px;
+        border-radius:25px;
+        box-shadow:0 15px 40px rgba(0,0,0,0.15);
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+    ">
+
+        <div style="
+            position:relative;
+            width:160px;
+            height:160px;
+            transform:rotate(-45deg);
+            animation:pulse 1s infinite;
+        ">
+
+            <div style="position:absolute;width:160px;height:160px;background:#e63946;"></div>
+
+            <div style="position:absolute;width:160px;height:160px;background:#e63946;border-radius:50%;top:-80px;"></div>
+
+            <div style="position:absolute;width:160px;height:160px;background:#e63946;border-radius:50%;left:80px;"></div>
+
+        </div>
+
+        <div style="margin-top:45px;color:#8b1e3f;font-weight:bold;text-align:center;">
+            вот это сердце я как заебался делать, оно пульсирует для тебя кста а еще тут музыку не будет потому что я забыл
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+/* ❤️ БОЛЬШЕ СЕРДЕЧЕК */
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+
+    heart.style.left = Math.random() * window.innerWidth + "px";
+    heart.style.fontSize = (10 + Math.random() * 30) + "px";
+    heart.style.animationDuration = (2 + Math.random() * 4) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 8000);
+}
+
+/* 👇 больше частота = больше сердечек */
+setInterval(createHeart, 200);
+</script>
+<div class="wrapper">
+    <a href="index.html" class="back-btn">← Назад</a>
+</div>
+
+<style>
+.wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center; /* центр по горизонтали */
+}
+
+/* КНОПКА */
+.back-btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 14px 26px;
+    background: linear-gradient(135deg, #8b1e3f, #c43a64);
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 14px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    transition: 0.25s;
+    font-family: Arial, sans-serif;
+}
+
+.back-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+}
+</style>
+</body>
+</html>
